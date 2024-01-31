@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccpgmsaxueb0h"]
+
+[ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_h1mof"]
+[ext_resource type="Texture2D" uid="uid://bi08iqgdb032u" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="2_t58nn"]
+[ext_resource type="PackedScene" uid="uid://c1wjk2a2mbc5g" path="res://scenes/component/vial_drop_component.tscn" id="3_ei8x2"]
+[ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="3_o0euj"]
+[ext_resource type="PackedScene" uid="uid://c56gybjtmbj33" path="res://scenes/component/hurtbox_component.tscn" id="4_v14ng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ups5s"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0qhf"]
+radius = 5.0
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_h1mof")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_o0euj")]
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ei8x2")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_v14ng")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_ups5s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t58nn")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_i0qhf")
