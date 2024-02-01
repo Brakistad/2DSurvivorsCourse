@@ -15,7 +15,11 @@ The project is structured as follows:
 
 ## How to Run
 
-To run this project, you need to have Godot 4 installed. Open Godot and import the project. Then, run the `main.gd` script.
+To run this project, you need to have Godot 4 installed.
+
+Install the godot vscode extension. You will then be prompted to reference the godot executable. You can find it in the godot installation folder.
+
+Extension ID: geequlim.godot-tools
 
 ## License
 
