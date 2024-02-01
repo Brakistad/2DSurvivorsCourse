@@ -11,7 +11,7 @@ The project is structured as follows:
 - `Enemy.gd`: This script handles the enemy's movements and actions.
 - `HealthComponent.gd`: This script manages the health of game characters.
 
-(Add more files and their descriptions as needed)
+(More files and their descriptions as needed)
 
 ## How to Run
 
