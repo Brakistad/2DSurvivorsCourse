@@ -7,6 +7,9 @@ extends CharacterBody2D
 
 var is_moving = false
 
+func _ready():
+	var arena_time_manager = get_tree().get_first_node_in_group("time_manager_group") as ArenaTimeManager
+	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 
 func _process(_delta):
 	if is_moving:
@@ -24,3 +27,7 @@ func _process(_delta):
 
 func set_is_moving(moving: bool):
 	is_moving = moving
+
+
+func on_arena_difficulty_increased(current_difficulty: int):
+	velocity_component.distancing = max(0, velocity_component.distancing - 5 * current_difficulty)
