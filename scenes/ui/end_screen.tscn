@@ -40,7 +40,7 @@ vertical_alignment = 1
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "You won! =)"
+text = "You won! 👑"
 horizontal_alignment = 1
 vertical_alignment = 1
 

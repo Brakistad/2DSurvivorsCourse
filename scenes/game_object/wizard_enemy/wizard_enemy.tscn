@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d153goiioub6u"]
+[gd_scene load_steps=10 format=3 uid="uid://d153goiioub6u"]
 
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_oo3pf"]
 [ext_resource type="Texture2D" uid="uid://noiopimmm10e" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_p52jq"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bkw1p3dee5bji" path="res://scenes/component/velocity_component.tscn" id="2_itwmf"]
 [ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="2_ndvds"]
 [ext_resource type="PackedScene" uid="uid://c56gybjtmbj33" path="res://scenes/component/hurtbox_component.tscn" id="3_jak46"]
-[ext_resource type="PackedScene" uid="uid://dru7f2kram8xl" path="res://scenes/enemy_ability/knife_ability_controller/knife_ability_controller.tscn" id="5_kudvb"]
 [ext_resource type="PackedScene" uid="uid://c1wjk2a2mbc5g" path="res://scenes/component/vial_drop_component.tscn" id="7_hw2vw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ly4w"]
@@ -25,14 +24,10 @@ max_health = 30.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_itwmf")]
 max_speed = 55
-distancing = 90.0
+distancing = 1.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_hw2vw")]
 health_component = NodePath("../HealthComponent")
-
-[node name="EnemyAbilities" type="Node" parent="."]
-
-[node name="KnifeAbilityController" parent="EnemyAbilities" instance=ExtResource("5_kudvb")]
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_3yenn")]
 health_component = NodePath("../HealthComponent")
