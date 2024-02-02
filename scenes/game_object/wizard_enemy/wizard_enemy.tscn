@@ -131,9 +131,8 @@ autoplay = "walk"
 max_health = 30.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_itwmf")]
-max_speed = 250
-acceleration = 1.0
-distancing = 60.0
+max_speed = 80
+distancing = 100.0
 randomize_distancing = 120.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_hw2vw")]

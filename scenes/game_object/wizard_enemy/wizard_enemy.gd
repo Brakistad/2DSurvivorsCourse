@@ -30,4 +30,4 @@ func set_is_moving(moving: bool):
 
 
 func on_arena_difficulty_increased(current_difficulty: int):
-	velocity_component.distancing = max(0, velocity_component.distancing - 5 * current_difficulty)
+	velocity_component.distancing = max(0, velocity_component.distancing - 2 * current_difficulty)
