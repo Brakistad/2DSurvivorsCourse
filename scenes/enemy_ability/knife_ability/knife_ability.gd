@@ -4,6 +4,7 @@ class_name KnifeAbility
 @onready var hurtbox_component = $HurtboxComponent
 
 func _ready():
+	hurtbox_component
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
