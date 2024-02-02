@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cft7kx0jmwaae"]
+
+[ext_resource type="Script" path="res://scenes/component/stamina_component.gd" id="1_abort"]
+
+[node name="StaminaComponent" type="Node"]
+script = ExtResource("1_abort")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true

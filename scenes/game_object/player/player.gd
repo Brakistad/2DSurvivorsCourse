@@ -2,31 +2,43 @@ extends CharacterBody2D
 class_name Player
 
 const MAX_SPEED = 100
+const SPRINT_SPEED = 200
 const ACCELERATION_SMOOTHING = 25
 
 @onready var damage_interval_timer = $DamageIntervalTimer as Timer
 @onready var health_component = $HealthComponent as HealthComponent
+@onready var stamina_component = $StaminaComponent as StaminaComponent
 @onready var health_bar = $HealthBar as ProgressBar
+@onready var stamina_bar = $StaminaBar as ProgressBar
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var visuals = $Visuals
 
 var number_colliding_bodies = 0
 
-
 func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
+	stamina_component.stamina_changed.connect(on_stamina_changed)
 	GameEvents.abiltiy_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
+	update_stamina_display()
 
 
 func _process(delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
-	var target_velocity = direction * MAX_SPEED
+
+	var movement_speed = MAX_SPEED
+	if Input.is_action_pressed("sprint") && stamina_component.can_use_stamina(5):
+		movement_speed = SPRINT_SPEED
+		stamina_component.use_stamina_cost(1)
+	else:
+		stamina_component.using_stamina = false
+
+	var target_velocity = direction * movement_speed
 	
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
@@ -56,6 +68,9 @@ func check_deal_damage():
 func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
+func update_stamina_display():
+	stamina_bar.value = stamina_component.get_stamina_percent()
+
 func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
@@ -69,7 +84,10 @@ func on_damage_interval_timer_timeout():
 func on_health_changed():
 	update_health_display()
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_stamina_changed():
+	update_stamina_display()
+
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
 	if not ability_upgrade is Ability:
 		return
 	
