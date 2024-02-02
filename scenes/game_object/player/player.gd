@@ -8,7 +8,6 @@ const ACCELERATION_SMOOTHING = 25
 @onready var damage_interval_timer = $DamageIntervalTimer as Timer
 @onready var health_component = $HealthComponent as HealthComponent
 @onready var stamina_component = $StaminaComponent as StaminaComponent
-@onready var health_bar = $HealthBar as ProgressBar
 @onready var stamina_bar = $StaminaBar as ProgressBar
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
@@ -20,10 +19,8 @@ func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
-	health_component.health_changed.connect(on_health_changed)
 	stamina_component.stamina_changed.connect(on_stamina_changed)
 	GameEvents.abiltiy_upgrade_added.connect(on_ability_upgrade_added)
-	update_health_display()
 	update_stamina_display()
 
 
@@ -65,9 +62,6 @@ func check_deal_damage():
 	health_component.damage(1)
 	damage_interval_timer.start()
 
-func update_health_display():
-	health_bar.value = health_component.get_health_percent()
-
 func update_stamina_display():
 	stamina_bar.value = stamina_component.get_stamina_percent()
 
@@ -80,9 +74,6 @@ func on_body_exited(_other_body: Node2D):
 	
 func on_damage_interval_timer_timeout():
 	check_deal_damage()
-	
-func on_health_changed():
-	update_health_display()
 
 func on_stamina_changed():
 	update_stamina_display()

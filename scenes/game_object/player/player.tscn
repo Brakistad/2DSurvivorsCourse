@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://vahp0gsqkxcu"]
+[gd_scene load_steps=15 format=3 uid="uid://vahp0gsqkxcu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_dvk4u"]
 [ext_resource type="Texture2D" uid="uid://bl707qqi8tcfw" path="res://scenes/game_object/player/player.png" id="1_fufab"]
 [ext_resource type="PackedScene" uid="uid://dn5secg5rtfa0" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_et2m4"]
 [ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="2_x6rdq"]
 [ext_resource type="PackedScene" uid="uid://cft7kx0jmwaae" path="res://scenes/component/stamina_component.tscn" id="3_ydu74"]
+[ext_resource type="PackedScene" uid="uid://bwitsngvy8r7y" path="res://scenes/component/health_bar_component.tscn" id="5_mc7n0"]
 
 [sub_resource type="Animation" id="Animation_38131"]
 length = 0.001
@@ -98,18 +99,6 @@ bg_color = Color(0.470588, 0.223529, 0.235294, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ff5l"]
 bg_color = Color(0.372549, 0.686275, 0.368627, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb7k8"]
-bg_color = Color(0.709804, 0.121569, 0.145098, 0.419608)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtxgm"]
-bg_color = Color(0.145098, 0.584314, 0.415686, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.12549, 0.517647, 0.368627, 1)
-border_blend = true
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g20do"]
 radius = 32.0
 
@@ -136,6 +125,9 @@ libraries = {
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_et2m4")]
 
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_mc7n0")]
+health_component = NodePath("../HealthComponent")
+
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -149,19 +141,6 @@ offset_bottom = -16.0
 pivot_offset = Vector2(16, 2)
 theme_override_styles/background = SubResource("StyleBoxFlat_htn1b")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3ff5l")
-max_value = 1.0
-value = 0.5
-show_percentage = false
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(32, 4)
-offset_left = -16.0
-offset_top = -22.0
-offset_right = 16.0
-offset_bottom = -18.0
-pivot_offset = Vector2(16, 2)
-theme_override_styles/background = SubResource("StyleBoxFlat_tb7k8")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wtxgm")
 max_value = 1.0
 value = 0.5
 show_percentage = false
