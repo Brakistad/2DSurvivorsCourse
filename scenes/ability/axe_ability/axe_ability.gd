@@ -1,7 +1,7 @@
 extends Node2D
 class_name AxeAbility
 
-const MAX_RADIUS = 100
+const MAX_RADIUS = 50
 
 @onready var hitbox_component = $HitboxComponent as HitboxComponent
 
@@ -11,7 +11,7 @@ func _ready():
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	
 	var tween = create_tween()
-	tween.tween_method(tween_method, 0.0, 2.0, 3.0)
+	tween.tween_method(tween_method, 0.0, 2.0, 3.0).set_ease(Tween.EASE_IN)
 	tween.tween_callback(queue_free)
 	
 

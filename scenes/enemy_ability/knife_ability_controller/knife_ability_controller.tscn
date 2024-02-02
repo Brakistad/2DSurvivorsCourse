@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dru7f2kram8xl"]
+
+[ext_resource type="Script" path="res://scenes/enemy_ability/knife_ability_controller/knife_ability_controller.gd" id="1_orr7a"]
+[ext_resource type="PackedScene" uid="uid://s5gtsb2c5na1" path="res://scenes/enemy_ability/knife_ability/knife_ability.tscn" id="2_ni53b"]
+
+[node name="KnifeAbilityController" type="Node"]
+script = ExtResource("1_orr7a")
+knife_ability_scene = ExtResource("2_ni53b")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

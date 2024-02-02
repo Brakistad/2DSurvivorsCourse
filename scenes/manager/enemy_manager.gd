@@ -36,7 +36,7 @@ func get_spawn_position():
 			return spawn_position
 		else:
 			# we have a collision
-			spawn_position = spawn_direction.rotated(angle_rotation)
+			spawn_direction = spawn_direction.rotated(angle_rotation)
 	return spawn_position
 	
 	
