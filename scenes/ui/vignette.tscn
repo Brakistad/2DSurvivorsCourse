@@ -14,10 +14,10 @@ tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(2.14355, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
 "update": 0,
-"values": [3.0, 0.68]
+"values": [0.68, 3.0, 0.68]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -26,10 +26,10 @@ tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 0.267943, 1),
 "update": 0,
-"values": [0.115]
+"values": [0.115, 0.294, 0.115]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -38,10 +38,10 @@ tracks/2/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(2.63902, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 2.63902, 1),
 "update": 0,
-"values": [Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 1)]
+"values": [Color(0.247059, 0.14902, 0.192157, 1), Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_emu0w"]
