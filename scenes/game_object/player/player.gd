@@ -59,6 +59,7 @@ func get_movement_vector():
 func check_deal_damage():
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
+	GameEvents.emit_player_damaged()
 	health_component.damage(1)
 	damage_interval_timer.start()
 
