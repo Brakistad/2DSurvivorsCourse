@@ -5,8 +5,10 @@ extends Node
 @export var acceleration: float = 5
 @export var distancing: float = 500
 @export var randomize_distancing: float = 50
+@export var sprint_speed_percent: float = 2
 
 var velocity = Vector2.ZERO
+var sprinting = false
 
 func accelerate_to_player():
 	var owner_node2d = owner as Node2D
@@ -30,7 +32,6 @@ func accelerate_to_player_distance():
 		return
 	
 	var vector_to_player = (player.global_position - owner_node2d.global_position)
-	var distance_to_player = vector_to_player.length()
 	var distancing_target = distancing + randf_range(-randomize_distancing/2, randomize_distancing/2)
 	var vector_to_distancing = (vector_to_player - (vector_to_player.normalized() * distancing_target)) as Vector2
 	var direction = vector_to_distancing.normalized()
@@ -38,7 +39,7 @@ func accelerate_to_player_distance():
 	
 
 func accelerate_in_direction(direction: Vector2):
-	var desired_velocity = direction * max_speed
+	var desired_velocity = direction * max_speed * get_sprint_factor()
 	# here we use framerate independent lerp, because players can play at different fps
 	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * get_process_delta_time()))
 
@@ -50,3 +51,8 @@ func move(character_body: CharacterBody2D):
 	character_body.move_and_slide()
 	velocity = character_body.velocity
 	
+func get_sprint_factor():
+	if !sprinting:
+		return 1
+	else:
+		return sprint_speed_percent

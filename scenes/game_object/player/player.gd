@@ -1,9 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const MAX_SPEED = 100
-const SPRINT_SPEED = 200
-const ACCELERATION_SMOOTHING = 25
+const SPRINT_SPEED_PERCENT = 2
 
 @onready var damage_interval_timer = $DamageIntervalTimer as Timer
 @onready var health_component = $HealthComponent as HealthComponent
@@ -12,10 +10,14 @@ const ACCELERATION_SMOOTHING = 25
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var visuals = $Visuals
+@onready var velocity_component = $VelocityComponent
 
 var number_colliding_bodies = 0
+var base_speed = 0
 
 func _ready():
+	base_speed = velocity_component.max_speed
+
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
@@ -24,21 +26,19 @@ func _ready():
 	update_stamina_display()
 
 
-func _process(delta):
+func _process(_delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 
-	var movement_speed = MAX_SPEED
+	velocity_component.sprinting = false
 	if Input.is_action_pressed("sprint") && stamina_component.can_use_stamina(5):
-		movement_speed = SPRINT_SPEED
-		stamina_component.use_stamina_cost(1)
+		velocity_component.sprinting = true
+		stamina_component.use_stamina_cost(.8)
 	else:
 		stamina_component.using_stamina = false
-
-	var target_velocity = direction * movement_speed
 	
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
 	
 	if movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play("walk")
@@ -78,9 +78,9 @@ func on_damage_interval_timer_timeout():
 func on_stamina_changed():
 	update_stamina_display()
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
-	if not ability_upgrade is Ability:
-		return
-	
-	var ability = ability_upgrade as Ability
-	abilities.add_child((ability.ability_controller_scene as PackedScene).instantiate())
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	if ability_upgrade is Ability:
+		var ability = ability_upgrade as Ability
+		abilities.add_child((ability.ability_controller_scene as PackedScene).instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed * (1 + current_upgrades["player_speed"]["quantity"] * .1)
