@@ -1,36 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5vjft5sq2lna"]
+[gd_scene load_steps=22 format=3 uid="uid://b5vjft5sq2lna"]
 
 [ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_guo2b"]
+[ext_resource type="PackedScene" uid="uid://dpglce81f1vs" path="res://scenes/component/random_stream_player_component.tscn" id="2_crk50"]
 [ext_resource type="Texture2D" uid="uid://cy408hqfsr6gj" path="res://scenes/ability/axe_ability/axe.png" id="2_o83r6"]
-
-[sub_resource type="Animation" id="Animation_qddbp"]
-resource_name = "in"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[ext_resource type="AudioStream" uid="uid://cd8efcjoahwk0" path="res://assets/audio/switch1.ogg" id="3_0pjlr"]
+[ext_resource type="AudioStream" uid="uid://dfnvqe0cwqf4m" path="res://assets/audio/switch2.ogg" id="4_2qsu6"]
+[ext_resource type="AudioStream" uid="uid://3wftcv2sf8dp" path="res://assets/audio/switch3.ogg" id="5_g7x0l"]
+[ext_resource type="AudioStream" uid="uid://e2oeq5w1j5ni" path="res://assets/audio/switch4.ogg" id="6_fwnof"]
+[ext_resource type="AudioStream" uid="uid://cfdvtxnoxtiqg" path="res://assets/audio/switch5.ogg" id="7_ph7io"]
+[ext_resource type="AudioStream" uid="uid://brj4tkmale6ej" path="res://assets/audio/switch6.ogg" id="8_v6yhf"]
+[ext_resource type="AudioStream" uid="uid://ca23o0wncnhlg" path="res://assets/audio/switch7.ogg" id="9_is0rl"]
+[ext_resource type="AudioStream" uid="uid://c8iqfw23rbvx6" path="res://assets/audio/switch8.ogg" id="10_g3pm0"]
+[ext_resource type="AudioStream" uid="uid://cckmd66t7h5rg" path="res://assets/audio/switch9.ogg" id="11_qvev5"]
+[ext_resource type="AudioStream" uid="uid://ditmepyu183iv" path="res://assets/audio/switch10.ogg" id="12_nmgaj"]
 
 [sub_resource type="Animation" id="Animation_4s2xl"]
 length = 0.001
@@ -71,6 +53,52 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_mrks3"]
+resource_name = "discard"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qddbp"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_37rcx"]
 resource_name = "selected"
 length = 0.4
@@ -99,22 +127,19 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -0.0872665, 0.174533, 0.0]
 }
-
-[sub_resource type="Animation" id="Animation_mrks3"]
-resource_name = "discard"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClickPlayerComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfm5n"]
@@ -123,6 +148,33 @@ _data = {
 "discard": SubResource("Animation_mrks3"),
 "in": SubResource("Animation_qddbp"),
 "selected": SubResource("Animation_37rcx")
+}
+
+[sub_resource type="Animation" id="Animation_aslh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cdo47"]
@@ -153,32 +205,19 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.05, 1.05), Vector2(1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_aslh8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HoverPlayerComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y53wy"]
@@ -193,6 +232,13 @@ offset_right = 152.0
 offset_bottom = 171.0
 pivot_offset = Vector2(75, 75)
 script = ExtResource("1_guo2b")
+
+[node name="HoverPlayerComponent" parent="." instance=ExtResource("2_crk50")]
+volume_db = -8.0
+streams = Array[AudioStream]([ExtResource("3_0pjlr"), ExtResource("4_2qsu6"), ExtResource("5_g7x0l"), ExtResource("6_fwnof"), ExtResource("7_ph7io"), ExtResource("8_v6yhf"), ExtResource("9_is0rl"), ExtResource("10_g3pm0"), ExtResource("11_qvev5"), ExtResource("12_nmgaj")])
+
+[node name="ClickPlayerComponent" parent="." instance=ExtResource("2_crk50")]
+streams = Array[AudioStream]([ExtResource("3_0pjlr"), ExtResource("4_2qsu6"), ExtResource("5_g7x0l"), ExtResource("6_fwnof"), ExtResource("7_ph7io"), ExtResource("8_v6yhf"), ExtResource("9_is0rl"), ExtResource("10_g3pm0"), ExtResource("11_qvev5"), ExtResource("12_nmgaj")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

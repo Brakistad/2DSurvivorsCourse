@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://vahp0gsqkxcu"]
+[gd_scene load_steps=25 format=3 uid="uid://vahp0gsqkxcu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_dvk4u"]
 [ext_resource type="Texture2D" uid="uid://bl707qqi8tcfw" path="res://scenes/game_object/player/player.png" id="1_fufab"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://c2ur21b0rniwm" path="res://scenes/component/hit_flash_component.tscn" id="5_6jvcj"]
 [ext_resource type="PackedScene" uid="uid://bwitsngvy8r7y" path="res://scenes/component/health_bar_component.tscn" id="5_mc7n0"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_qfops"]
+[ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="8_fsdw1"]
+[ext_resource type="AudioStream" uid="uid://bb6j35x4u3oap" path="res://assets/audio/impactMining_000.ogg" id="9_qykh7"]
+[ext_resource type="AudioStream" uid="uid://dbgsaxyieelc0" path="res://assets/audio/impactMining_001.ogg" id="10_g51it"]
+[ext_resource type="AudioStream" uid="uid://c0p8frm4iokjp" path="res://assets/audio/impactMining_002.ogg" id="11_e2f7n"]
+[ext_resource type="AudioStream" uid="uid://docwjuak3jdbo" path="res://assets/audio/impactMining_003.ogg" id="12_65bvi"]
+[ext_resource type="AudioStream" uid="uid://c77bikrca36ke" path="res://assets/audio/impactMining_004.ogg" id="13_p71ug"]
 
 [sub_resource type="Animation" id="Animation_38131"]
 length = 0.001
@@ -142,6 +148,11 @@ sprint_speed_percent = 1.5
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 hit_flash_material = SubResource("ShaderMaterial_1y3y3")
+
+[node name="HitRandomStreamPlayer" parent="." instance=ExtResource("8_fsdw1")]
+stream = ExtResource("9_qykh7")
+bus = &"player_hit"
+streams = Array[AudioStream]([ExtResource("9_qykh7"), ExtResource("10_g51it"), ExtResource("11_e2f7n"), ExtResource("12_65bvi"), ExtResource("13_p71ug")])
 
 [node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_mc7n0")]
 health_component = NodePath("../HealthComponent")

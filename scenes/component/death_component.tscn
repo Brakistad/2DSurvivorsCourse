@@ -1,7 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://be6kl82obg4qr"]
+[gd_scene load_steps=15 format=3 uid="uid://be6kl82obg4qr"]
 
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_bsxfq"]
 [ext_resource type="Texture2D" uid="uid://bi08iqgdb032u" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_cskte"]
+[ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="3_wm1lb"]
+[ext_resource type="AudioStream" uid="uid://c6qqln88po2qo" path="res://assets/audio/footstep_carpet_000.ogg" id="4_l84y3"]
+[ext_resource type="AudioStream" uid="uid://cklbu3cehreoo" path="res://assets/audio/footstep_carpet_001.ogg" id="5_os5qo"]
+[ext_resource type="AudioStream" uid="uid://b16x34a0wd0dk" path="res://assets/audio/footstep_carpet_002.ogg" id="6_hkhbo"]
+[ext_resource type="AudioStream" uid="uid://bqahpbqcgy8qo" path="res://assets/audio/footstep_carpet_003.ogg" id="7_q5lwo"]
+[ext_resource type="AudioStream" uid="uid://d2lgowvtay63u" path="res://assets/audio/footstep_carpet_004.ogg" id="8_go7yc"]
+
+[sub_resource type="Animation" id="Animation_sgobr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.321569, 0.27451, 0.462745)]
+}
 
 [sub_resource type="Animation" id="Animation_qxfqo"]
 resource_name = "default"
@@ -42,33 +75,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.321569, 0.27451, 0.854902), Color(1, 0.796471, 0.782353, 0.838823), Color(1, 0.321569, 0.27451, 0.462745)]
-}
-
-[sub_resource type="Animation" id="Animation_sgobr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.321569, 0.27451, 0.462745)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4g0dv"]
@@ -113,3 +119,7 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("3_wm1lb")]
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("4_l84y3"), ExtResource("5_os5qo"), ExtResource("6_hkhbo"), ExtResource("7_q5lwo"), ExtResource("8_go7yc")])

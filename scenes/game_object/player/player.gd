@@ -11,6 +11,7 @@ const SPRINT_SPEED_PERCENT = 2
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var visuals = $Visuals
 @onready var velocity_component = $VelocityComponent
+@onready var hit_random_stream_player = $HitRandomStreamPlayer as RandomStreamPlayer2DComponent
 
 var number_colliding_bodies = 0
 var base_speed = 0
@@ -62,6 +63,7 @@ func check_deal_damage():
 	GameEvents.emit_player_damaged()
 	health_component.damage(1)
 	damage_interval_timer.start()
+	hit_random_stream_player.play_random()
 
 func update_stamina_display():
 	stamina_bar.value = stamina_component.get_stamina_percent()

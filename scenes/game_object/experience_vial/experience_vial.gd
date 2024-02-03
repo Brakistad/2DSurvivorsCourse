@@ -52,5 +52,7 @@ func on_area_entered(_other_area: Area2D):
 	# the function to handle once the tweens complete
 	tween.tween_callback(collect)
 
+	$RandomStreamPlayer2DComponent.play_random()
+
 	
 

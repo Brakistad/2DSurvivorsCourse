@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d153goiioub6u"]
+[gd_scene load_steps=23 format=3 uid="uid://d153goiioub6u"]
 
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_oo3pf"]
 [ext_resource type="Texture2D" uid="uid://noiopimmm10e" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_p52jq"]
@@ -9,7 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://c2ur21b0rniwm" path="res://scenes/component/hit_flash_component.tscn" id="5_knqv1"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_s82ok"]
 [ext_resource type="PackedScene" uid="uid://c1wjk2a2mbc5g" path="res://scenes/component/vial_drop_component.tscn" id="7_hw2vw"]
+[ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="9_uf5ud"]
 [ext_resource type="PackedScene" uid="uid://bwitsngvy8r7y" path="res://scenes/component/health_bar_component.tscn" id="10_cskwo"]
+[ext_resource type="AudioStream" uid="uid://c6qqln88po2qo" path="res://assets/audio/footstep_carpet_000.ogg" id="10_j30ua"]
+[ext_resource type="AudioStream" uid="uid://cklbu3cehreoo" path="res://assets/audio/footstep_carpet_001.ogg" id="11_vswjn"]
+[ext_resource type="AudioStream" uid="uid://b16x34a0wd0dk" path="res://assets/audio/footstep_carpet_002.ogg" id="12_mybfm"]
+[ext_resource type="AudioStream" uid="uid://bqahpbqcgy8qo" path="res://assets/audio/footstep_carpet_003.ogg" id="13_07vqg"]
+[ext_resource type="AudioStream" uid="uid://d2lgowvtay63u" path="res://assets/audio/footstep_carpet_004.ogg" id="14_j6sx2"]
 
 [sub_resource type="Animation" id="Animation_d2uhw"]
 length = 0.001
@@ -159,6 +165,10 @@ health_bar_size = "small"
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_3yenn")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("9_uf5ud")]
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("10_j30ua"), ExtResource("11_vswjn"), ExtResource("12_mybfm"), ExtResource("13_07vqg"), ExtResource("14_j6sx2")])
 
 [node name="Visuals" type="Node2D" parent="."]
 

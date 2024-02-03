@@ -1,0 +1,39 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://7u2yow24ylgo"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_eqf65"]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_abb1k"]
+resource_name = "Compressor"
+ratio = 11.9
+gain = 5.2
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_bjr5h"]
+resource_name = "Chorus"
+voice/1/level_db = -29.6
+
+[resource]
+bus/1/name = &"sfx"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"music"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"player_hit"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"sfx"
+bus/3/effect/0/effect = SubResource("AudioEffectLowPassFilter_eqf65")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectCompressor_abb1k")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectChorus_bjr5h")
+bus/3/effect/2/enabled = true

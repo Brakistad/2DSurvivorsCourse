@@ -26,3 +26,4 @@ func get_time_elapsed():
 func on_timer_timeout():
 	var end_screen_instance = end_screen_scene.instantiate() as EndScreen
 	add_child(end_screen_instance)
+	end_screen_instance.play_jingle()
