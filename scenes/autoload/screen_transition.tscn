@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd8wus13nclsu"]
+[gd_scene load_steps=6 format=3 uid="uid://dd8wus13nclsu"]
 
-[ext_resource type="Shader" path="res://scenes/autoload/screen_transition.gdshader" id="1_crw3h"]
 [ext_resource type="Script" path="res://scenes/autoload/screen_transition.gd" id="1_n45x7"]
-[ext_resource type="Texture2D" uid="uid://cj3pef5j6r20d" path="res://assets/ui/screen_transition.png" id="2_u431n"]
+[ext_resource type="Material" uid="uid://cwmp24elgryhj" path="res://scenes/ui/screen_transition.tres" id="2_1ew6h"]
 
 [sub_resource type="Animation" id="Animation_5m6oe"]
 length = 0.001
@@ -80,12 +79,6 @@ _data = {
 "default": SubResource("Animation_jmig1")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uf1i7"]
-shader = ExtResource("1_crw3h")
-shader_parameter/transition_color = Color(0.247059, 0.14902, 0.192157, 1)
-shader_parameter/percent = 0.625
-shader_parameter/transition_texture = ExtResource("2_u431n")
-
 [node name="ScreenTransition" type="CanvasLayer"]
 process_mode = 3
 layer = 5
@@ -98,7 +91,7 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_uf1i7")
+material = ExtResource("2_1ew6h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
