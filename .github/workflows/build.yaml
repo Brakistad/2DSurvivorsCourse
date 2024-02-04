@@ -32,5 +32,18 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: Client - ${{ matrix.platform }}
+          name: Latest - ${{ matrix.platform.name }}
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+      # release latest
+      - name: Create Release
+        id: create_release
+        uses: xxxxxxxxxxxxxxxxxxxxxx@xx
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            Changes in this Release
+          draft: false
+          prerelease: false
