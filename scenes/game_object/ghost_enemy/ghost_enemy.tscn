@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxp4ao75dhuqd"]
+[gd_scene load_steps=25 format=3 uid="uid://cxp4ao75dhuqd"]
 
 [ext_resource type="Script" path="res://scenes/game_object/ghost_enemy/ghost_enemy.gd" id="1_ciohy"]
 [ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="1_e38io"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cycrpofxp8pho" path="res://scenes/component/fading_ghost_component.tscn" id="7_efgln"]
 [ext_resource type="PackedScene" uid="uid://be6kl82obg4qr" path="res://scenes/component/death_component.tscn" id="7_rysur"]
 [ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="8_cl5u0"]
-[ext_resource type="Shader" path="res://scenes/component/fading_ghost_component.gdshader" id="8_srwcb"]
 [ext_resource type="AudioStream" uid="uid://c6qqln88po2qo" path="res://assets/audio/footstep_carpet_000.ogg" id="9_v1aw3"]
 [ext_resource type="AudioStream" uid="uid://cklbu3cehreoo" path="res://assets/audio/footstep_carpet_001.ogg" id="10_gy3m0"]
 [ext_resource type="AudioStream" uid="uid://b16x34a0wd0dk" path="res://assets/audio/footstep_carpet_002.ogg" id="11_74o4l"]
@@ -193,11 +192,6 @@ resource_local_to_scene = true
 shader = SubResource("Shader_u16qp")
 shader_parameter/lerp_percent = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ou4ul"]
-resource_local_to_scene = true
-shader = ExtResource("8_srwcb")
-shader_parameter/invisibilty = 0.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj87w"]
 radius = 8.0
 
@@ -234,7 +228,6 @@ hit_flash_material = SubResource("ShaderMaterial_vnoy4")
 
 [node name="FadingGhostComponent" parent="." node_paths=PackedStringArray("sprite", "velocity_component") instance=ExtResource("7_efgln")]
 sprite = NodePath("../Visuals/Sprite2D")
-fade_material = SubResource("ShaderMaterial_ou4ul")
 velocity_component = NodePath("../VelocityComponent")
 velocity_treshold = 100.0
 

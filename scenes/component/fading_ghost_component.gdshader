@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float invisibilty : hint_range(0.0, 1.0);
+uniform float invisibilty : hint_range(0.0, 1.0) = 0.1;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
