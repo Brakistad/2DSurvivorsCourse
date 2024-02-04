@@ -2,7 +2,7 @@ extends Button
 
 
 func _ready():
-    pressed.connect(on_pressed)
+	pressed.connect(on_pressed)
 
 func on_pressed():
-    ($RandomStreamPlayerComponent as RandomStreamPlayerComponent).play_random()
+	($RandomStreamPlayerComponent as RandomStreamPlayerComponent).play_random()
