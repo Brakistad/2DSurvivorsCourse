@@ -39,7 +39,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: './build/*.zip'
+          artifacts: "Latest - ${{ matrix.platform.name }}"
           body: 'This is the latest release of the project.'
           draft: false
           tag: latest
