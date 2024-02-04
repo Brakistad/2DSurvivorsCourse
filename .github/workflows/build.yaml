@@ -35,12 +35,3 @@ jobs:
         with:
           name: Latest - ${{ matrix.platform.name }}
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
-      - name: Create Release and Upload Artifact
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          artifacts: "Latest - ${{ matrix.platform.name }}"
-          body: 'This is the latest release of the project.'
-          draft: false
-          tag: latest
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
