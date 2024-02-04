@@ -67,6 +67,7 @@ default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_64ilb")
 Button/colors/font_color = Color(0.247059, 0.14902, 0.192157, 1)
+Button/colors/font_focus_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_hover_color = Color(0.741176, 0.423529, 0.290196, 1)
 Button/colors/font_pressed_color = Color(0.741176, 0.423529, 0.290196, 1)
 Button/styles/focus = SubResource("StyleBoxEmpty_1e0kh")
