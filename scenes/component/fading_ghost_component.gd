@@ -3,6 +3,7 @@ extends Node
 @export var sprite: Sprite2D
 @export var fade_material: ShaderMaterial
 @export var velocity_component: VelocityComponent
+@export var health_bar_component: HealthBarComponent
 @export var velocity_treshold: float = 50.0
 
 @onready var timer_instance :Timer
@@ -26,10 +27,12 @@ func fade_invinsible(percent: float, duration_variance: float = 0.0):
 
 func fade_in(percent: float, duration_variance: float = 0.0):
     fade_invinsible(percent, duration_variance)
+    health_bar_component.health_bar.visible = true
     is_faded = false
 
 func fade_out(percent: float, duration_variance: float = 0.0):
     fade_invinsible(percent, duration_variance)
+    health_bar_component.health_bar.visible = false
     is_faded = true
 
 func on_velocity_treshold_reached():
