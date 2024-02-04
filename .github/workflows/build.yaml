@@ -34,16 +34,18 @@ jobs:
         with:
           name: Latest - ${{ matrix.platform.name }}
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
-      # release latest
+      # release latest as a realease, tagged as latest
       - name: Create Release
         id: create_release
-        uses: xxxxxxxxxxxxxxxxxxxxxx@xx
+        uses: ncipollo/release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.sha }}
+          artifacts: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          tag: latest
+          name: Latest Release
           body: |
-            Changes in this Release
+            This release contains the latest version of the project.
+            To use the release, download the appropriate file for your platform and follow the installation instructions.
           draft: false
           prerelease: false
