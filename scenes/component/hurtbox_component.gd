@@ -6,7 +6,7 @@ signal hit
 @export var health_component: HealthComponent
 
 var floating_text_scene = preload("res://scenes/ui/floating_text.tscn")
-
+var disabled = false
 
 func _ready():
 	area_entered.connect(on_area_entered)
@@ -17,6 +17,9 @@ func on_area_entered(other_area: Area2D):
 		return
 	
 	if health_component == null:
+		return
+	
+	if disabled:
 		return
 	
 	var hitbox_component = other_area as HitboxComponent

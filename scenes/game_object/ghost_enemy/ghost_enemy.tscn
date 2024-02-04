@@ -220,8 +220,8 @@ max_health = 15.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_71ido")]
 max_speed = 130
-distancing = 80.0
-randomize_distancing = 80.0
+distancing = 100.0
+randomize_distancing = 100.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_4gxpp")]
 drop_percent = 0.7
@@ -232,12 +232,13 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 hit_flash_material = SubResource("ShaderMaterial_vnoy4")
 
-[node name="FadingGhostComponent" parent="." node_paths=PackedStringArray("sprite", "velocity_component", "health_bar_component") instance=ExtResource("7_efgln")]
+[node name="FadingGhostComponent" parent="." node_paths=PackedStringArray("sprite", "velocity_component", "health_bar_component", "hurt_box_component") instance=ExtResource("7_efgln")]
 sprite = NodePath("../Visuals/Sprite2D")
 fade_material = SubResource("ShaderMaterial_ey5la")
 velocity_component = NodePath("../VelocityComponent")
 health_bar_component = NodePath("../HealthBarComponent")
-velocity_treshold = 100.0
+hurt_box_component = NodePath("../HurtboxComponent")
+velocity_treshold = 70.0
 
 [node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_qtpm6")]
 health_component = NodePath("../HealthComponent")
