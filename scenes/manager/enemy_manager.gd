@@ -4,6 +4,7 @@ const SPAWN_RADIUS = sqrt(pow(320,2)+pow(180,2)) + 10
 
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
+@export var ghost_enemy_scene: PackedScene
 @export var arena_time_manager: ArenaTimeManager
 
 @onready var timer = $Timer as Timer
@@ -69,14 +70,19 @@ func on_arena_difficulty_increased(current_difficulty: int):
 	if current_difficulty == 6:
 		enemy_table.add_item(wizard_enemy_scene, 10)
 	elif current_difficulty == 8:
-		enemy_table.add_item(wizard_enemy_scene, 10)
+		enemy_table.update_weight(wizard_enemy_scene, 20)
 	elif current_difficulty == 10:
-		enemy_table.add_item(wizard_enemy_scene, 10)
+		enemy_table.update_weight(wizard_enemy_scene, 30)
 	elif current_difficulty == 12:
-		enemy_table.add_item(wizard_enemy_scene, 10)
+		enemy_table.update_weight(wizard_enemy_scene, 40)
+		enemy_table.add_item(ghost_enemy_scene, 10)
 	elif current_difficulty == 14:
-		enemy_table.add_item(wizard_enemy_scene, 10)
+		enemy_table.update_weight(wizard_enemy_scene, 50)
+		enemy_table.update_weight(ghost_enemy_scene, 20)
 	elif current_difficulty == 16:
 		enemy_table.remove_item(basic_enemy_scene)
+		enemy_table.update_weight(ghost_enemy_scene, 50)
+	elif current_difficulty == 32:
+		enemy_table.remove_item(wizard_enemy_scene)
 	
 	

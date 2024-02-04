@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cycrpofxp8pho"]
+
+[ext_resource type="Script" path="res://scenes/component/fading_ghost_component.gd" id="1_8ucqd"]
+[ext_resource type="Material" uid="uid://c4d5lsbmvaqwq" path="res://scenes/component/fading_ghost_component.tres" id="2_q530a"]
+
+[node name="FadingGhostComponent" type="Node" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_8ucqd")
+sprite = NodePath("")
+fade_material = ExtResource("2_q530a")

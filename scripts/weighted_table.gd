@@ -32,3 +32,11 @@ func remove_item(item_to_remove):
 	weight_sum = 0
 	for item in items:
 		weight_sum += item["weight"]
+
+func update_weight(item, new_weight):
+	for i in range(items.size()):
+		if items[i]["item"] == item:
+			weight_sum -= items[i]["weight"]
+			items[i]["weight"] = new_weight
+			weight_sum += new_weight
+			return

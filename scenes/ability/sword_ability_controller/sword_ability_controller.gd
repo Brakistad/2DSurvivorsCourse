@@ -22,7 +22,11 @@ func on_timer_timeout():
 	
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	enemies = enemies.filter(close_to_player)
-	
+	# filter enemies, that have the compenent Node of type "FadingGhostComponent", and apply a filter to that subgroup
+	var ghost_enemies = enemies.filter(check_component.bind("FadingGhostComponent"))
+	enemies = enemies.filter(check_component.bind("FadingGhostComponent", false))
+	# add the groups together
+	enemies.append_array(ghost_enemies)
 	
 	if enemies.size() == 0:
 		return
@@ -40,6 +44,12 @@ func on_timer_timeout():
 	var enemy_direction = enemies[0].global_position - sword_instance.global_position
 	sword_instance.rotation = enemy_direction.angle()
 
+func check_component(enemy: Node2D, component_name: String, check_has: bool = true):
+	if check_has:
+		# we then also check if the component is_faded is false
+		return enemy.has_node(component_name) && !enemy.get_node(component_name).is_faded
+	else:
+		return !enemy.has_node(component_name)
 
 func close_to_player(enemy: Node2D):
 	var player = get_tree().get_first_node_in_group("player") as Node2D
