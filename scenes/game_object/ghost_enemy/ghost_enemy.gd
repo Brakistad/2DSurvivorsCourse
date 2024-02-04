@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var velocity_component = $VelocityComponent
 @onready var visuals = $Visuals
 @onready var animation_player = $AnimationPlayer
-@onready var fading_animation_player = $FadingGhostPlayer
 
 var is_moving = true
 
