@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows]
+        platform: 
+          - name: "windows"
+            file: "2DSurvivorCourse.exe"
+          - name: "linux"
+            file: "2DSurvivorCourse"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,8 +26,8 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@v1.5.0
         with:
-          name: 2DSurvivorsCourse
-          preset: ${{ matrix.platform }}
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
           debugMode: "true"
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
