@@ -11,6 +11,7 @@ on:
 jobs:
   Godot:
     runs-on: ubuntu-latest
+    environment: release
     strategy:
       matrix:
         platform: 
@@ -42,4 +43,4 @@ jobs:
           body: 'This is the latest release of the project.'
           draft: false
           tag: ${{ github.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
