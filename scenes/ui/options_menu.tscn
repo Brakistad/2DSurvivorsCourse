@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dekobbsyrxcnp"]
+[gd_scene load_steps=5 format=3 uid="uid://dekobbsyrxcnp"]
 
 [ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_tsd06"]
 [ext_resource type="TileSet" uid="uid://drjgls6dc2oy2" path="res://resources/tileset.tres" id="2_51n5s"]
+[ext_resource type="PackedScene" uid="uid://bfq7jahyebl23" path="res://scenes/ui/vignette.tscn" id="2_s0me5"]
 [ext_resource type="PackedScene" uid="uid://7ckblcfikjj5" path="res://scenes/ui/sound_button.tscn" id="3_akshv"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_tsd06")
+
+[node name="Vignette" parent="." instance=ExtResource("2_s0me5")]
+layer = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_51n5s")
@@ -40,6 +45,7 @@ theme_override_constants/separation = 24
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Options"
 
@@ -52,6 +58,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionsContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "SFX Volume"
 
 [node name="SfxSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionsContainer"]
@@ -65,6 +72,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionsContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionsContainer"]
@@ -72,12 +80,14 @@ unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 0.5
 
 [node name="WindowOptionsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionsContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Window Mode"
 
 [node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionsContainer" instance=ExtResource("3_akshv")]
