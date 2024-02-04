@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 @onready var velocity_component = $VelocityComponent
 @onready var visuals = $Visuals
-@onready var animation_player = $AnimationPlayer
 
 var is_moving = true
 
