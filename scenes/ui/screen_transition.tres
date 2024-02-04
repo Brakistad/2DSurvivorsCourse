@@ -6,5 +6,5 @@
 [resource]
 shader = ExtResource("1_fmrd2")
 shader_parameter/transition_color = Color(0.247059, 0.14902, 0.192157, 1)
-shader_parameter/percent = 0.0
+shader_parameter/percent = 0.625
 shader_parameter/transition_texture = ExtResource("2_p3lqh")
