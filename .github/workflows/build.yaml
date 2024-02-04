@@ -42,5 +42,5 @@ jobs:
           artifacts: './build/*.zip'
           body: 'This is the latest release of the project.'
           draft: false
-          tag: ${{ github.ref }}
+          tag: latest
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
