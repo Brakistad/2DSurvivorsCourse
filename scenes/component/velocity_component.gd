@@ -6,8 +6,8 @@ signal signal_velocity_treshold_lost
 
 @export var max_speed: int = 40
 @export var acceleration: float = 5
-@export var distancing: float = 500
-@export var randomize_distancing: float = 50
+@export var distancing: float = 100
+@export var randomize_distancing: float = 200
 @export var sprint_speed_percent: float = 2
 
 var velocity = Vector2.ZERO
@@ -19,7 +19,7 @@ var velocity_treshold_reached = false
 
 
 func _ready():
-	distancing_walker_band_distance = distancing + randf_range(-randomize_distancing/2, randomize_distancing/2)
+	distancing_walker_band_distance = distancing + randf_range(-randomize_distancing, randomize_distancing)
 
 func set_velocity_treshold(value: float):
 	velocity_treshold = value
@@ -32,7 +32,7 @@ func get_sprint_factor():
 		return sprint_speed_percent
 
 func get_distancing_walker_band_distance():
-	var distancing_walker_band_target = distancing + randf_range(-randomize_distancing/2, randomize_distancing/2)
+	var distancing_walker_band_target = distancing + randf_range(-randomize_distancing, randomize_distancing)
 	distancing_walker_band_distance = lerpf(distancing_walker_band_distance, distancing_walker_band_target, 1 - exp(-acceleration * get_process_delta_time()))
 	return distancing_walker_band_distance
 
