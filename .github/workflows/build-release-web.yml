@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build and Deploy WebAssembly version to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -35,7 +35,7 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@v1.5.0
         with:
-          name: index.html
+          name: app/index.html
           preset: web
       - name: Setup Pages
         uses: actions/configure-pages@v4
