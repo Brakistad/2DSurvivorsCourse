@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=3 format=3 uid="uid://b3ky4wu1beo28"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_ah4gi"]
+[ext_resource type="Texture2D" uid="uid://cd8y3g2ch8qyu" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_myq3k"]
+
+[resource]
+script = ExtResource("1_ah4gi")
+id = "experience_gain"
+max_quantity = 1
+experience_cost = 100
+name = "Experience Gain"
+icon = ExtResource("1_myq3k")
+description = "Increases experience drop chance by 10%"

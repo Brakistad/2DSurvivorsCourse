@@ -16,9 +16,9 @@ jobs:
       matrix:
         platform: 
           - name: "windows"
-            file: "2DSurvivorCourse.exe"
-          - name: "linux"
-            file: "2DSurvivorCourse"
+            file: "TheArena.exe"
+          - name: web
+            file: "index.html"
     steps:
       - uses: actions/checkout@v4
         with:

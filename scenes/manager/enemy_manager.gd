@@ -30,10 +30,10 @@ func get_spawn_position():
 	var angle_rotation = TAU / spawn_subdivisions
 	for i in spawn_subdivisions: # Could also be called recursive, but might be a overloaded call stack
 		spawn_position = player.global_position + (spawn_direction * SPAWN_RADIUS)
-		
+		var additional_check_offset = spawn_direction * 20
 		# Some raycast magic here 🎇
 		# bit shift here is a illustration of how to easily reference mask in code i.e 1 << 19 for mask 20
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0) 
+		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additional_check_offset, 1 << 0) 
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters) as Dictionary
 		if result.is_empty():
 			# We are clear
