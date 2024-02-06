@@ -13,12 +13,10 @@ func _ready():
     get_tree().paused = true
     $%ContinueButton.pressed.connect(on_continue_button_pressed)
     $%QuitButton.pressed.connect(on_quit_button_pressed)
-    GameEvents.last_scene = "victory"
 
 func set_defeat():
     ($%TitleLabel as Label).text = "Defeat"
-    ($%DescriptionLabel as Label).text = "You lost 😥"
-    GameEvents.last_scene = "defeat"
+    ($%DescriptionLabel as Label).text = "You died!"
     play_jingle(true)
 
 func play_jingle(defeat: bool = false):
