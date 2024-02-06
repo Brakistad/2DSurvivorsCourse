@@ -15,6 +15,8 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  GODOT_VERSION: 4.2.1
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
@@ -23,27 +25,58 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+ # deploy:
+ #   environment:
+ #     name: github-pages
+ #     url: ${{ steps.deployment.outputs.page_url }}
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - name: Checkout
+ #       uses: actions/checkout@v4
+ #     - name: Build
+ #       id: build
+ #       uses: manleydev/build-godot-action@v1.5.0
+ #       with:
+ #         name: index.html
+#          preset: web
+#          subdirectory: web
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v4
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v3
+#        with:
+#          path: 'build/pages'
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v4
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build
-        id: build
-        uses: manleydev/build-godot-action@v1.5.0
+        uses: actions/checkout@v2
         with:
-          name: index.html
-          preset: web
-          subdirectory: pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          lfs: true
+      - name: Setup
+        run: |
+            mkdir -v -p ~/.local/share/godot/templates
+            mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+            mkdir -v -p build/web
+            godot --headless --verbose --export-release "web" ../build/web/index.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
         with:
-          path: 'build/pages'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            name: web
+            path: build/web
+      - name: Install rsync 📚
+        run: |
+            apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+            branch: gh-pages # The branch the action should deploy to.
+            folder: build/web # The folder the action should deploy.
