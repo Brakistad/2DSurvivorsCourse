@@ -1,0 +1,38 @@
+name: Build Godot Project
+
+on:
+  push: {
+    branches: [main]
+  }
+  pull_request: {
+    branches: [main]
+  }
+
+jobs:
+  Godot:
+    runs-on: ubuntu-latest
+    environment: build
+    strategy:
+      matrix:
+        platform: 
+          - name: "windows"
+            file: "TheArena.exe"
+          - name: web
+            file: "index.html"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      # builds the game release
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@v1.5.0
+        with:
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
+          debugMode: "true"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Latest - ${{ matrix.platform.name }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
