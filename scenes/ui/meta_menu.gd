@@ -11,9 +11,6 @@ var meta_upgrade_card_scene: PackedScene = preload("res://scenes/ui/meta_upgrade
 
 
 func _ready():
-    main_menu_button.text = "Main Menu"
-    if GameEvents.last_scene == "main_menu":
-        main_menu_button.text = "Back"
     main_menu_button.pressed.connect(on_main_menu_button_pressed)
     for child in grid_container.get_children():
         child.queue_free()
@@ -26,6 +23,5 @@ func _ready():
 func on_main_menu_button_pressed():
     ScreenTransition.transition()
     await ScreenTransition.transitioned_halfway
-    GameEvents.last_scene = "meta_menu"
     get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
     

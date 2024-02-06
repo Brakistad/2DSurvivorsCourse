@@ -47,7 +47,7 @@ text = "The Arena"
 [node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a6126")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Play"
+text = "Enter Arena"
 
 [node name="UpgradesButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a6126")]
 unique_name_in_owner = true
