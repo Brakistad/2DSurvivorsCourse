@@ -36,5 +36,4 @@ func on_options_closed(options_instance: Node):
 func on_upgrades_pressed():
     ScreenTransition.transition()
     await ScreenTransition.transitioned_halfway
-    GameEvents.last_scene = "main_menu"
     get_tree().change_scene_to_packed(upgrade_scene)
