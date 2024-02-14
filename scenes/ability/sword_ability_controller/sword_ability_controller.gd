@@ -16,7 +16,7 @@ func _ready():
 
 
 func on_timer_timeout():
-	var player = get_tree().get_first_node_in_group("player") as Node2D
+	var player = get_this_player_target() as Node2D
 	if player == null:
 		return false
 	
@@ -52,14 +52,14 @@ func check_component(enemy: Node2D, component_name: String, check_has: bool = tr
 		return !enemy.has_node(component_name)
 
 func close_to_player(enemy: Node2D):
-	var player = get_tree().get_first_node_in_group("player") as Node2D
+	var player = get_this_player_target()
 	if player == null:
 		return false
 	return enemy.global_position.distance_squared_to(player.global_position) < pow(MAX_RANGE, 2)
 	
 
 func sort_closest_to_player(a: Node2D, b: Node2D):
-	var player = get_tree().get_first_node_in_group("player") as Node2D
+	var player = get_this_player_target()
 	if player == null:
 		return false
 	var a_distance = a.global_position.distance_squared_to(player.global_position)
@@ -73,3 +73,9 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		($Timer as Timer).start()
 	elif upgrade.id == "sword_damage":
 		additional_damage_percent = 1 + (current_upgrades["sword_damage"]["quantity"] * 0.15)
+
+func get_this_player_target():
+	var player = self.get_parent().get_parent() as Node2D
+	if player == null:
+		return null
+	return player

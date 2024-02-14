@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccnlkhg1bbt1p"]
+[gd_scene load_steps=14 format=3 uid="uid://ccnlkhg1bbt1p"]
 
 [ext_resource type="TileSet" uid="uid://drjgls6dc2oy2" path="res://resources/tileset.tres" id="1_3ct2u"]
 [ext_resource type="PackedScene" uid="uid://vahp0gsqkxcu" path="res://scenes/game_object/player/player.tscn" id="1_11rig"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d4gn1utt8smdy" path="res://scenes/manager/experience_manager.tscn" id="4_aanvk"]
 [ext_resource type="PackedScene" uid="uid://db78nv100eg1g" path="res://scenes/ui/arena_time_ui.tscn" id="5_hy0yr"]
 [ext_resource type="PackedScene" uid="uid://b5f1w6dqyppe" path="res://scenes/manager/upgrade_manager.tscn" id="6_qgwst"]
+[ext_resource type="PackedScene" uid="uid://bxlmkfi3kc2td" path="res://scenes/game_object/player2/player2.tscn" id="13_3hf1v"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_uy7if")
@@ -49,5 +50,9 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(624, 377)
 collision_layer = 0
+
+[node name="Player2" parent="Entities" instance=ExtResource("13_3hf1v")]
+unique_name_in_owner = true
+position = Vector2(664, 378)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

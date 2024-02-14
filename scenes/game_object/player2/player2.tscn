@@ -1,20 +1,20 @@
-[gd_scene load_steps=25 format=3 uid="uid://vahp0gsqkxcu"]
+[gd_scene load_steps=25 format=3 uid="uid://bxlmkfi3kc2td"]
 
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_dvk4u"]
-[ext_resource type="Texture2D" uid="uid://drwgo3q2iu5v8" path="res://scenes/game_object/player/player.png" id="1_fufab"]
-[ext_resource type="PackedScene" uid="uid://bkw1p3dee5bji" path="res://scenes/component/velocity_component.tscn" id="2_6ompf"]
-[ext_resource type="PackedScene" uid="uid://dn5secg5rtfa0" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_et2m4"]
-[ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="2_x6rdq"]
-[ext_resource type="PackedScene" uid="uid://cft7kx0jmwaae" path="res://scenes/component/stamina_component.tscn" id="3_ydu74"]
-[ext_resource type="PackedScene" uid="uid://c2ur21b0rniwm" path="res://scenes/component/hit_flash_component.tscn" id="5_6jvcj"]
-[ext_resource type="PackedScene" uid="uid://bwitsngvy8r7y" path="res://scenes/component/health_bar_component.tscn" id="5_mc7n0"]
-[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_qfops"]
-[ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="8_fsdw1"]
-[ext_resource type="AudioStream" uid="uid://bb6j35x4u3oap" path="res://assets/audio/impactMining_000.ogg" id="9_qykh7"]
-[ext_resource type="AudioStream" uid="uid://dbgsaxyieelc0" path="res://assets/audio/impactMining_001.ogg" id="10_g51it"]
-[ext_resource type="AudioStream" uid="uid://c0p8frm4iokjp" path="res://assets/audio/impactMining_002.ogg" id="11_e2f7n"]
-[ext_resource type="AudioStream" uid="uid://docwjuak3jdbo" path="res://assets/audio/impactMining_003.ogg" id="12_65bvi"]
-[ext_resource type="AudioStream" uid="uid://c77bikrca36ke" path="res://assets/audio/impactMining_004.ogg" id="13_p71ug"]
+[ext_resource type="Script" path="res://scenes/game_object/player2/player2.gd" id="1_pg4k7"]
+[ext_resource type="PackedScene" uid="uid://bkw1p3dee5bji" path="res://scenes/component/velocity_component.tscn" id="2_l6lme"]
+[ext_resource type="PackedScene" uid="uid://dam2vh7rxq5fs" path="res://scenes/component/health_component.tscn" id="3_c63il"]
+[ext_resource type="PackedScene" uid="uid://cft7kx0jmwaae" path="res://scenes/component/stamina_component.tscn" id="4_cjy88"]
+[ext_resource type="PackedScene" uid="uid://dn5secg5rtfa0" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="5_j0873"]
+[ext_resource type="PackedScene" uid="uid://c2ur21b0rniwm" path="res://scenes/component/hit_flash_component.tscn" id="6_nxpix"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_qfvut"]
+[ext_resource type="PackedScene" uid="uid://d1iwhv6fv2nsf" path="res://scenes/component/random_stream_player_2d_component.tscn" id="8_e18ru"]
+[ext_resource type="AudioStream" uid="uid://bb6j35x4u3oap" path="res://assets/audio/impactMining_000.ogg" id="9_0xcnw"]
+[ext_resource type="AudioStream" uid="uid://dbgsaxyieelc0" path="res://assets/audio/impactMining_001.ogg" id="10_lfy8g"]
+[ext_resource type="AudioStream" uid="uid://c0p8frm4iokjp" path="res://assets/audio/impactMining_002.ogg" id="11_rueho"]
+[ext_resource type="AudioStream" uid="uid://docwjuak3jdbo" path="res://assets/audio/impactMining_003.ogg" id="12_3w46c"]
+[ext_resource type="AudioStream" uid="uid://c77bikrca36ke" path="res://assets/audio/impactMining_004.ogg" id="13_hwhxf"]
+[ext_resource type="PackedScene" uid="uid://bwitsngvy8r7y" path="res://scenes/component/health_bar_component.tscn" id="14_pcp7v"]
+[ext_resource type="Texture2D" uid="uid://ca78ufi7qhr3l" path="res://scenes/game_object/player2/player2.png" id="15_q771q"]
 
 [sub_resource type="Animation" id="Animation_38131"]
 length = 0.001
@@ -104,7 +104,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y3y3"]
 resource_local_to_scene = true
-shader = ExtResource("6_qfops")
+shader = ExtResource("7_qfvut")
 shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htn1b"]
@@ -122,39 +122,39 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r76ma"]
 radius = 6.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player2" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
-script = ExtResource("1_dvk4u")
+script = ExtResource("1_pg4k7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5b3bq")
 }
 
-[node name="VelocityComponent" parent="." instance=ExtResource("2_6ompf")]
+[node name="VelocityComponent" parent="." instance=ExtResource("2_l6lme")]
 max_speed = 85
 acceleration = 25.0
 sprint_speed_percent = 1.5
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_x6rdq")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_c63il")]
 
-[node name="StaminaComponent" parent="." instance=ExtResource("3_ydu74")]
+[node name="StaminaComponent" parent="." instance=ExtResource("4_cjy88")]
 
 [node name="Abilities" type="Node" parent="."]
 
-[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_et2m4")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("5_j0873")]
 
-[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_6jvcj")]
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_nxpix")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 hit_flash_material = SubResource("ShaderMaterial_1y3y3")
 
-[node name="HitRandomStreamPlayer" parent="." instance=ExtResource("8_fsdw1")]
-stream = ExtResource("9_qykh7")
+[node name="HitRandomStreamPlayer" parent="." instance=ExtResource("8_e18ru")]
+stream = ExtResource("9_0xcnw")
 bus = &"player_hit"
-streams = Array[AudioStream]([ExtResource("9_qykh7"), ExtResource("10_g51it"), ExtResource("11_e2f7n"), ExtResource("12_65bvi"), ExtResource("13_p71ug")])
+streams = Array[AudioStream]([ExtResource("9_0xcnw"), ExtResource("10_lfy8g"), ExtResource("11_rueho"), ExtResource("12_3w46c"), ExtResource("13_hwhxf")])
 
-[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_mc7n0")]
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("14_pcp7v")]
 health_component = NodePath("../HealthComponent")
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
@@ -186,7 +186,7 @@ shape = SubResource("CircleShape2D_g20do")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_fufab")
+texture = ExtResource("15_q771q")
 offset = Vector2(0, -8)
 
 [node name="CollisionArea2D" type="Area2D" parent="."]

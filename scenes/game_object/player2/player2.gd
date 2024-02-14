@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Player2
 
 const SPRINT_SPEED_PERCENT = 2
 
@@ -32,7 +32,7 @@ func _process(_delta):
 	var direction = movement_vector.normalized()
 
 	velocity_component.sprinting = false
-	if Input.is_action_pressed("sprint") && stamina_component.can_use_stamina(5):
+	if Input.is_action_pressed("sprint2") && stamina_component.can_use_stamina(5):
 		velocity_component.sprinting = true
 		stamina_component.use_stamina_cost(.8)
 	else:
@@ -52,8 +52,8 @@ func _process(_delta):
 
 
 func get_movement_vector():
-	var x_movement = Input.get_action_strength("move_right2") - Input.get_action_strength("move_left2")
-	var y_movement = Input.get_action_strength("move_down2") - Input.get_action_strength("move_up2")
+	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	return Vector2(x_movement, y_movement)
 
 
