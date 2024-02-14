@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://ct2tqu2d30ovl"]
+
+[ext_resource type="Script" path="res://scenes/ability/link_ability_controller/link_ability_controller.gd" id="1_yrpfd"]
+[ext_resource type="Texture2D" uid="uid://ctyxoh7yflc2w" path="res://scenes/ability/link_ability/link.png" id="2_2x8r3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wulhc"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ko38"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtmfn"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjiri"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5pe7"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipcov"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omdlo"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(432, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v26vy"]
+atlas = ExtResource("2_2x8r3")
+region = Rect2(504, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fv2ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wulhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ko38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtmfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjiri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5pe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipcov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omdlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v26vy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LinkAbilityController" type="Node"]
+script = ExtResource("1_yrpfd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 0)
+sprite_frames = SubResource("SpriteFrames_fv2ba")
+frame = 5
+frame_progress = 0.0467716
