@@ -22,7 +22,7 @@ Install the godot vscode extension. You will then be prompted to reference the g
 Extension ID: geequlim.godot-tools
 
 ## Play the Game
-You can freely play the webassembly version of the game [here](http://thearena.webrodent.com/).
+You can freely play the webassembly version of the game [here](https://brakistad.github.io/2DSurvivorsCourse/).
 
 ## License
 
